@@ -1,9 +1,7 @@
-package com.dental.ivory.model;
+package com.dental.ivory.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import com.dental.ivory.model.entity.BaseEntity;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class PatientEntity extends BaseEntity {
+    @ManyToOne
+    @JoinColumn(name="clinic_id")
+    ClinicEntity clinicEntity;
 
     @Column(name = "patient_name")
     private String patientName;
@@ -24,5 +25,4 @@ public class PatientEntity extends BaseEntity {
     private Integer patientAge;
     @Column(name = "patient_mobile_number")
     private Long patientNumber;
-
 }
